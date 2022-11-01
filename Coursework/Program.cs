@@ -46,30 +46,77 @@ namespace CSharpTutorials
 
         static void Arithmetic()
         {
-            Console.Clear();
             Random rnd = new Random();
             int problemCount = 0;
+            bool valid = false;
+            int check;
+            var userAnswer = "";
 
             do // Constalty produce problems for the user until a total of 10 problems are answered
             {
-                int valueOne = rnd.Next(1, 10);
-                int valueTwo = rnd.Next(1, 10);
-                int actualAnswer = valueOne + valueTwo;
+                int valueOne = rnd.Next(1, 11);
+                int valueTwo = rnd.Next(1, 11);
+                int operatorRnd = rnd.Next(0, 2);
+                int actualAnswer;
 
 
-                Console.WriteLine("What is " + valueOne + " + " + valueTwo);
-                int userAnswer = int.Parse(Console.ReadLine());
 
 
-                if (userAnswer != actualAnswer)
+
+                // if(int.Parse(userAnswer) != actualAnswer)
+                // {
+                //     Console.WriteLine("Incorrect!");
+                //     problemCount++;
+                //     Console.WriteLine(problemCount);
+                // }
+                // else
+                // {
+                //     problemCount++;
+                //     continue;
+                // }
+
+                switch (operatorRnd)
                 {
-                    Console.WriteLine("Incorrect!");
-                    problemCount++;
-                }
-                else
-                {
-                    problemCount++;
-                    continue;
+                    case 0:
+                        Console.WriteLine("What is " + valueOne + " + " + valueTwo);
+                        userAnswer = Console.ReadLine();
+                        actualAnswer = valueOne + valueTwo;
+                        if (int.Parse(userAnswer) != actualAnswer)
+                        {
+                            Console.WriteLine("Incorrect!");
+                            problemCount++;
+                            break;
+                        }
+                        else
+                        {
+                            problemCount++;
+                            Console.WriteLine(operatorRnd);
+
+                            break;
+                        }
+
+                    case 1:
+                        Console.WriteLine("What is " + valueOne + " - " + valueTwo);
+                        userAnswer = Console.ReadLine();
+                        actualAnswer = valueOne - valueTwo;
+                        if (int.Parse(userAnswer) != actualAnswer)
+                        {
+                            Console.WriteLine("Incorrect!");
+                            Console.WriteLine(operatorRnd);
+                            problemCount++;
+                            break;
+                        }
+                        else
+                        {
+                            problemCount++;
+                            Console.WriteLine(operatorRnd);
+
+                            break;
+                        }
+                    default:
+                        Console.WriteLine(operatorRnd);
+                        break;
+
                 }
 
             } while (problemCount <= 10);
