@@ -172,14 +172,9 @@ namespace CSharpTutorials
             Console.WriteLine("What is your shift?");
             int shift = int.Parse(Console.ReadLine());
 
-            //Console.WriteLine("Enter the messsage that you want to encrypt");
-            //do
-            //{
-            //    string userMessage = Console.ReadLine();
-            //    valid 
-            //} while(!valid())
+            Console.WriteLine("Write your message to be encrypted: ");
+            string userMessage = Console.ReadLine();
             char[] userCharacters = userMessage.ToCharArray();
-            //char[] encryptedMessage = string.ToCharArray();
 
             StringBuilder encryptedMessage = new StringBuilder();
             for(int i = 0; i < userCharacters.Length;i++)
