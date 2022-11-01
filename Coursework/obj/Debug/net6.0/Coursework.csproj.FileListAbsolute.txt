@@ -1,0 +1,15 @@
+/Users/ahmedobaid/Projects/Coursework/Coursework/bin/Debug/net6.0/Coursework
+/Users/ahmedobaid/Projects/Coursework/Coursework/bin/Debug/net6.0/Coursework.deps.json
+/Users/ahmedobaid/Projects/Coursework/Coursework/bin/Debug/net6.0/Coursework.runtimeconfig.json
+/Users/ahmedobaid/Projects/Coursework/Coursework/bin/Debug/net6.0/Coursework.dll
+/Users/ahmedobaid/Projects/Coursework/Coursework/bin/Debug/net6.0/Coursework.pdb
+/Users/ahmedobaid/Projects/Coursework/Coursework/obj/Debug/net6.0/Coursework.csproj.AssemblyReference.cache
+/Users/ahmedobaid/Projects/Coursework/Coursework/obj/Debug/net6.0/Coursework.GeneratedMSBuildEditorConfig.editorconfig
+/Users/ahmedobaid/Projects/Coursework/Coursework/obj/Debug/net6.0/Coursework.AssemblyInfoInputs.cache
+/Users/ahmedobaid/Projects/Coursework/Coursework/obj/Debug/net6.0/Coursework.AssemblyInfo.cs
+/Users/ahmedobaid/Projects/Coursework/Coursework/obj/Debug/net6.0/Coursework.csproj.CoreCompileInputs.cache
+/Users/ahmedobaid/Projects/Coursework/Coursework/obj/Debug/net6.0/Coursework.dll
+/Users/ahmedobaid/Projects/Coursework/Coursework/obj/Debug/net6.0/refint/Coursework.dll
+/Users/ahmedobaid/Projects/Coursework/Coursework/obj/Debug/net6.0/Coursework.pdb
+/Users/ahmedobaid/Projects/Coursework/Coursework/obj/Debug/net6.0/Coursework.genruntimeconfig.cache
+/Users/ahmedobaid/Projects/Coursework/Coursework/obj/Debug/net6.0/ref/Coursework.dll
