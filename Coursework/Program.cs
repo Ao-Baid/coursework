@@ -34,14 +34,7 @@ namespace CSharpTutorials
 
         static void Wipe()
         {
-            //bool exit = true;
-            //while (exit)
-            //{
-            //    if(Console.ReadKey() = ConsoleKey.Escape)
-            //    {
-
-            //    }
-            //}
+         
         }
 
         static void Arithmetic()
@@ -59,23 +52,7 @@ namespace CSharpTutorials
                 int operatorRnd = rnd.Next(0, 2);
                 int actualAnswer;
 
-
-
-
-
-                // if(int.Parse(userAnswer) != actualAnswer)
-                // {
-                //     Console.WriteLine("Incorrect!");
-                //     problemCount++;
-                //     Console.WriteLine(problemCount);
-                // }
-                // else
-                // {
-                //     problemCount++;
-                //     continue;
-                // }
-
-                switch (operatorRnd)
+                switch (operatorRnd) //switch statement will result in different actualAnswers and outputs to user for if the arithmetic operation is + or -
                 {
                     case 0:
                         Console.WriteLine("What is " + valueOne + " + " + valueTwo);
