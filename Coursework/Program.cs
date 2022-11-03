@@ -32,33 +32,45 @@ namespace CSharpTutorials
 
         }
 
-        static void Wipe()
+        public static int integerValidation(string input) //method to ensure that inputs requiring integers are satisfied with that condition
         {
-         
+            int temp;
+            input = Console.ReadLine();
+            while (!Int32.TryParse(input, out temp))
+            {
+                Console.WriteLine("Bad integer");
+                input = Console.ReadLine();
+                if (Int32.TryParse(input, out temp))
+                {
+                    temp = int.Parse(input);
+                }
+            }
+            return temp;
+
+
+
+
         }
 
-        static void Arithmetic()
+        public static void Arithmetic()
         {
             Random rnd = new Random();
             int problemCount = 0;
-            bool valid = false;
-            int check;
-            var userAnswer = "";
+            string userAnswer = "";
+            int actualAnswer;
 
             do // Constalty produce problems for the user until a total of 10 problems are answered
             {
                 int valueOne = rnd.Next(1, 11);
                 int valueTwo = rnd.Next(1, 11);
                 int operatorRnd = rnd.Next(0, 2);
-                int actualAnswer;
 
                 switch (operatorRnd) //switch statement will result in different actualAnswers and outputs to user for if the arithmetic operation is + or -
                 {
                     case 0:
                         Console.WriteLine("What is " + valueOne + " + " + valueTwo);
-                        userAnswer = Console.ReadLine();
                         actualAnswer = valueOne + valueTwo;
-                        if (int.Parse(userAnswer) != actualAnswer)
+                        if (integerValidation(userAnswer) != actualAnswer)
                         {
                             Console.WriteLine("Incorrect!");
                             problemCount++;
@@ -68,15 +80,13 @@ namespace CSharpTutorials
                         {
                             problemCount++;
                             Console.WriteLine(operatorRnd);
-
                             break;
                         }
 
                     case 1:
                         Console.WriteLine("What is " + valueOne + " - " + valueTwo);
-                        userAnswer = Console.ReadLine();
                         actualAnswer = valueOne - valueTwo;
-                        if (int.Parse(userAnswer) != actualAnswer)
+                        if (integerValidation(userAnswer) != actualAnswer)
                         {
                             Console.WriteLine("Incorrect!");
                             Console.WriteLine(operatorRnd);
@@ -120,7 +130,7 @@ namespace CSharpTutorials
             {
                 average = (upperBound + lowerBound) / 2;
 
-                if ((average*average) > squareRootNumber)
+                if ((average * average) > squareRootNumber)
                 {
                     upperBound = average;
                 }
@@ -129,7 +139,7 @@ namespace CSharpTutorials
                     lowerBound = average;
                 }
 
-                
+
 
             }
 
@@ -143,33 +153,47 @@ namespace CSharpTutorials
 
         static void CeaserEncrypt()
         {
-            string Alphabet = "abcdefghijklmnopqrstuvwxyz";
+            //a string that contains all alphabet letters and numbers 0 to 9 and space are written and then converted to a char array
+            string Alphabet = "abcdefghijklmnopqrstuvwxyz123456789 ";
             char[] alphaChars = Alphabet.ToCharArray();
 
+            //user inputs their shift as an integer
             Console.WriteLine("What is your shift?");
             int shift = int.Parse(Console.ReadLine());
 
+
+            //user inputs the messsage they want encrypted. This message is then converted from a string to a char array containing each individual character
             Console.WriteLine("Write your message to be encrypted: ");
             string userMessage = Console.ReadLine();
             char[] userCharacters = userMessage.ToCharArray();
 
-            StringBuilder encryptedMessage = new StringBuilder();
-            for(int i = 0; i < userCharacters.Length;i++)
-            {
-                char letter = userMessage[i];
-                letter = (char)(letter + shift);
-                if (letter > 'z')
-                {
-                    letter = (char)(letter - 26);
-                }
-                else if (letter < 'a')
-                {
-                    letter = (char)(letter + 26);
-                }
+            StringBuilder encryptedMessage = new StringBuilder(); //This is an object included in c# that allows for the manipulation of strings which involves the creation of them as seen below
 
-                encryptedMessage.Append(letter);
+            for (int i = 0; i < userCharacters.Length; i++) //iterating until we reach the number of charaacters in the users input
+            {
+                //char letter = userMessage[i];
+                //letter = (char)(letter + shift);
+                //if (letter > 'z')
+                //{
+                //    letter = (char)(letter - 26);
+                //}
+                //else if (letter < 'a')
+                //{
+                //    letter = (char)(letter + 26);
+                //}
+
+                //encryptedMessage.Append(letter);
+
+                char letter = userMessage[i];
+                int letterIndex = Array.IndexOf(alphaChars, letter);
+                int newLetterPos = (((letterIndex + shift) % alphaChars.Length + alphaChars.Length) % alphaChars.Length);
+                char newLetter = alphaChars[newLetterPos];
+                userCharacters[i] = newLetter;
+
+
 
             }
+            encryptedMessage.Append(userCharacters);
             Console.WriteLine(encryptedMessage);
             Console.ReadKey();
 
