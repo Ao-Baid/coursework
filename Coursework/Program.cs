@@ -35,7 +35,7 @@ namespace CSharpTutorials
         public static int integerValidation(string input) //method to ensure that inputs requiring integers are satisfied with that condition
         {
             int temp;
-            input = Console.ReadLine();
+            input = Console.ReadLine(); //the function itself will require user put an input
             while (!Int32.TryParse(input, out temp))
             {
                 Console.WriteLine("Bad integer");
@@ -45,7 +45,7 @@ namespace CSharpTutorials
                     temp = int.Parse(input);
                 }
             }
-            return temp;
+            return temp; //if the input is an integer, temp is returned into the variable or condition it was called in
 
 
 
@@ -111,12 +111,32 @@ namespace CSharpTutorials
 
         static void SquareRootCalculator()
         {
+
             Console.Clear();
             Console.WriteLine("What is the number you want to square root? ");
-            double squareRootNumber = double.Parse(Console.ReadLine());
+            string tempeorary = "";
+
+            /*since the input validation function needs a string, to avoid repeated console.ReadLine(), 
+              we can create a tempororay string variable to pass as a parameter and the value returned
+              is put into both variables below */
+
+
+
+            int squareRootNumber = integerValidation(tempeorary);
+            while(squareRootNumber < 0)
+            {
+                Console.WriteLine("This is not a valid inpu, write a positive number!");
+                squareRootNumber = integerValidation(tempeorary);
+            }
 
             Console.WriteLine("To what precision do you want the square root to be done to? ");
-            int precision = int.Parse(Console.ReadLine());
+            int precision = integerValidation(tempeorary);
+            while(precision < 0 || precision > 6)
+            {
+                Console.WriteLine("Write an appropraite precision between 1 and 6");
+                precision = integerValidation(tempeorary);
+
+            }
 
 
             double accuracy = Math.Pow(10.0, -precision);   //by raising the precison to the exponent with a base of 10, we can decide how many 0's
