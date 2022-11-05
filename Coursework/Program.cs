@@ -10,6 +10,11 @@ namespace CSharpTutorials
             Console.WriteLine("1: Arithmetic Challenge\n2: Square Root calcualtor\n3: Ceaser Cipher Encrypter");
             Console.WriteLine("What is the option you wish to access: ");
             int option = int.Parse(Console.ReadLine());
+            while(option <= 0 || option > 4)
+            {
+                Console.WriteLine("Write a suitable menu option!");
+                option = int.Parse(Console.ReadLine());
+            }
 
             switch (option) //number that is written by user will dictate which miniapp is called
             {
