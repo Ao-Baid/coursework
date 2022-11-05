@@ -56,6 +56,7 @@ namespace CSharpTutorials
         {
             Random rnd = new Random();
             int problemCount = 0;
+            int correctAnswer = 0;
             string userAnswer = "";
             int actualAnswer;
 
@@ -97,6 +98,8 @@ namespace CSharpTutorials
                         {
                             problemCount++;
                             Console.WriteLine(operatorRnd);
+                            correctAnswer++;
+
 
                             break;
                         }
@@ -107,6 +110,12 @@ namespace CSharpTutorials
                 }
 
             } while (problemCount <= 10);
+
+            Console.WriteLine("You have gotten {0} out of 10 questions correct\n", correctAnswer);
+            Console.WriteLine("Press any key to return to the main menu");
+            Console.ReadKey();
+            Console.Clear();
+            Main();
         }
 
         static void SquareRootCalculator()
