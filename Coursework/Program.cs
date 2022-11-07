@@ -41,7 +41,7 @@ namespace CSharpTutorials
         {
             int temp;
             input = Console.ReadLine(); //the function itself will require user put an input
-            while (!Int32.TryParse(input, out temp))
+            while (!Int32.TryParse(input, out temp)) //the use of typecasting to convert the string input to an integer
             {
                 Console.WriteLine("Bad integer");
                 input = Console.ReadLine();
