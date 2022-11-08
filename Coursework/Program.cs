@@ -5,15 +5,16 @@ namespace CSharpTutorials
 {
     class Program
     {
-        static void Main()
+        public static void Main()
         {
             Console.WriteLine("1: Arithmetic Challenge\n2: Square Root calcualtor\n3: Ceaser Cipher Encrypter\n4: Ceaser Decrypter\n5: Exit");
             Console.WriteLine("What is the option you wish to access: ");
-            int option = int.Parse(Console.ReadLine());
-            while(option <= 0 || option > 5)
+            string temp = "";
+            int option = integerValidation(temp);
+            while(option <= 0 || option > 5) 
             {
                 Console.WriteLine("Write a suitable menu option!");
-                option = int.Parse(Console.ReadLine());
+                option = integerValidation(temp);
             }
 
             switch (option) //number that is written by user will dictate which miniapp is called
@@ -46,7 +47,7 @@ namespace CSharpTutorials
             input = Console.ReadLine(); //the function itself will require user put an input
             while (!Int32.TryParse(input, out temp)) //the use of typecasting to convert the string input to an integer
             {
-                Console.WriteLine("Bad integer");
+                Console.WriteLine("Enter an integer not a character(s)! ");
                 input = Console.ReadLine();
                 if (Int32.TryParse(input, out temp))
                 {
