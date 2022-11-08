@@ -10,11 +10,11 @@ namespace CSharpTutorials
             Console.WriteLine("1: Arithmetic Challenge\n2: Square Root calcualtor\n3: Ceaser Cipher Encrypter\n4: Ceaser Decrypter\n5: Exit");
             Console.WriteLine("What is the option you wish to access: ");
             string temp = "";
-            int option = integerValidation(temp);
+            int option = integerValidation();
             while(option <= 0 || option > 5) 
             {
                 Console.WriteLine("Write a suitable menu option!");
-                option = integerValidation(temp);
+                option = integerValidation();
             }
 
             switch (option) //number that is written by user will dictate which miniapp is called
@@ -41,10 +41,10 @@ namespace CSharpTutorials
 
         }
 
-        public static int integerValidation(string input) //method to ensure that inputs requiring integers are satisfied with that condition
+        public static int integerValidation() //method to ensure that inputs requiring integers are satisfied with that condition
         {
             int temp;
-            input = Console.ReadLine(); //the function itself will require user put an input
+            string input = Console.ReadLine(); //the function itself will require user put an input
             while (!Int32.TryParse(input, out temp)) //the use of typecasting to convert the string input to an integer
             {
                 Console.WriteLine("Enter an integer not a character(s)! ");
@@ -80,7 +80,7 @@ namespace CSharpTutorials
                     case 0:
                         Console.WriteLine("What is " + valueOne + " + " + valueTwo);
                         actualAnswer = valueOne + valueTwo;
-                        if (integerValidation(userAnswer) != actualAnswer)
+                        if (integerValidation() != actualAnswer)
                         {
                             Console.WriteLine("Incorrect!");
                             problemCount++;
@@ -96,7 +96,7 @@ namespace CSharpTutorials
                     case 1:
                         Console.WriteLine("What is " + valueOne + " - " + valueTwo);
                         actualAnswer = valueOne - valueTwo;
-                        if (integerValidation(userAnswer) != actualAnswer)
+                        if (integerValidation() != actualAnswer)
                         {
                             Console.WriteLine("Incorrect!");
                             Console.WriteLine(operatorRnd);
@@ -132,7 +132,6 @@ namespace CSharpTutorials
 
             Console.Clear();
             Console.WriteLine("What is the number you want to square root? ");
-            string tempeorary = "";
 
             /*since the input validation function needs a string, to avoid repeated console.ReadLine(), 
               we can create a tempororay string variable to pass as a parameter and the value returned
@@ -140,19 +139,19 @@ namespace CSharpTutorials
 
 
 
-            int squareRootNumber = integerValidation(tempeorary);
+            int squareRootNumber = integerValidation();
             while(squareRootNumber < 0)
             {
                 Console.WriteLine("This is not a valid inpu, write a positive number!");
-                squareRootNumber = integerValidation(tempeorary);
+                squareRootNumber = integerValidation();
             }
 
             Console.WriteLine("To what precision do you want the square root to be done to? ");
-            int precision = integerValidation(tempeorary);
+            int precision = integerValidation();
             while(precision < 0 || precision > 6)
             {
                 Console.WriteLine("Write an appropraite precision between 1 and 6");
-                precision = integerValidation(tempeorary);
+                precision = integerValidation();
 
             }
 
