@@ -7,10 +7,10 @@ namespace CSharpTutorials
     {
         static void Main()
         {
-            Console.WriteLine("1: Arithmetic Challenge\n2: Square Root calcualtor\n3: Ceaser Cipher Encrypter");
+            Console.WriteLine("1: Arithmetic Challenge\n2: Square Root calcualtor\n3: Ceaser Cipher Encrypter\n4: Ceaser Decrypter\n5: Exit");
             Console.WriteLine("What is the option you wish to access: ");
             int option = int.Parse(Console.ReadLine());
-            while(option <= 0 || option > 4)
+            while(option <= 0 || option > 5)
             {
                 Console.WriteLine("Write a suitable menu option!");
                 option = int.Parse(Console.ReadLine());
@@ -33,6 +33,9 @@ namespace CSharpTutorials
                 case 4:
                     CeaserDecrypt();
                     break;
+
+                case 5:
+                    return; //by using return on a functuon that is "void", it will terminate the main method thus terminating the program
             }
 
         }
@@ -123,7 +126,7 @@ namespace CSharpTutorials
             Main();
         }
 
-        static void SquareRootCalculator()
+        public static void SquareRootCalculator()
         {
 
             Console.Clear();
@@ -185,7 +188,7 @@ namespace CSharpTutorials
 
         }
 
-        static void CeaserEncrypt()
+        public static void CeaserEncrypt()
         {
             //a string that contains all alphabet letters and numbers 0 to 9 and space are written and then converted to a char array
             string Alphabet = "abcdefghijklmnopqrstuvwxyz123456789 ";
