@@ -45,7 +45,7 @@ namespace CSharpTutorials
         {
             int temp;
             string input = Console.ReadLine(); //the function itself will require user put an input
-            while (!Int32.TryParse(input, out temp)) //the use of typecasting to convert the string input to an integer
+            while (!Int32.TryParse(input, out temp)) //continously asks for integer data type through user input
             {
                 Console.WriteLine("Enter an integer not a character(s)! ");
                 input = Console.ReadLine();
@@ -55,10 +55,6 @@ namespace CSharpTutorials
                 }
             }
             return temp; //if the input is an integer, temp is returned into the variable or condition it was called in
-
-
-
-
         }
 
         public static void Arithmetic()
@@ -66,7 +62,6 @@ namespace CSharpTutorials
             Random rnd = new Random();
             int problemCount = 0;
             int correctAnswer = 0;
-            string userAnswer = "";
             int actualAnswer;
 
             do // Constalty produce problems for the user until a total of 10 problems are answered
@@ -136,8 +131,6 @@ namespace CSharpTutorials
             /*since the input validation function needs a string, to avoid repeated console.ReadLine(), 
               we can create a tempororay string variable to pass as a parameter and the value returned
               is put into both variables below */
-
-
 
             int squareRootNumber = integerValidation();
             while(squareRootNumber < 0)
@@ -233,14 +226,6 @@ namespace CSharpTutorials
             encryptedMessage.Append(userCharacters);
             Console.WriteLine(encryptedMessage);
             Console.ReadKey();
-
-
-
-            //for(int i = 0; i < userMessage.Length; i++)
-
-            //{
-            //    userMessage[i] =  
-            //}
         }
 
         static void CeaserDecrypt()
