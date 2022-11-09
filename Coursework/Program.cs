@@ -77,14 +77,13 @@ namespace CSharpTutorials
                         actualAnswer = valueOne + valueTwo;
                         if (integerValidation() != actualAnswer)
                         {
-                            Console.WriteLine("Incorrect!");
+                            Console.WriteLine("Incorrect! Answer is {0}", actualAnswer);
                             problemCount++;
                             break;
                         }
                         else
                         {
                             problemCount++;
-                            Console.WriteLine(operatorRnd);
                             break;
                         }
 
@@ -93,18 +92,14 @@ namespace CSharpTutorials
                         actualAnswer = valueOne - valueTwo;
                         if (integerValidation() != actualAnswer)
                         {
-                            Console.WriteLine("Incorrect!");
-                            Console.WriteLine(operatorRnd);
+                            Console.WriteLine("Incorrect! Answer is {0}", actualAnswer);
                             problemCount++;
                             break;
                         }
                         else
                         {
                             problemCount++;
-                            Console.WriteLine(operatorRnd);
                             correctAnswer++;
-
-
                             break;
                         }
                     default:
