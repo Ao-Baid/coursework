@@ -5,13 +5,20 @@ namespace CSharpTutorials
 {
     class Program
     {
+        public static void returnToMainMenu()
+        {
+            Console.WriteLine("Press any key to return to the main menu");
+            Console.ReadKey();
+            Console.Clear();
+            Main();
+        }
+
         public static void Main()
         {
             Console.WriteLine("1: Arithmetic Challenge\n2: Square Root calcualtor\n3: Ceaser Cipher Encrypter\n4: Ceaser Decrypter\n5: Exit");
             Console.WriteLine("What is the option you wish to access: ");
-            string temp = "";
             int option = integerValidation();
-            while(option <= 0 || option > 5) 
+            while (option <= 0 || option > 5)
             {
                 Console.WriteLine("Write a suitable menu option!");
                 option = integerValidation();
@@ -28,11 +35,11 @@ namespace CSharpTutorials
                     break;
 
                 case 3:
-                    CeaserEncrypt();
+                    CeaserEncrypt("encrypted");
                     break;
 
                 case 4:
-                    CeaserDecrypt();
+                    CeaserEncrypt("decrypted"); //the decrypt program is actually within the Ceaser encrypt function however only runs when we pass the "decrypt" parameter
                     break;
 
                 case 5:
@@ -59,6 +66,7 @@ namespace CSharpTutorials
 
         public static void Arithmetic()
         {
+            Console.Clear();
             Random rnd = new Random();
             int problemCount = 0;
             int correctAnswer = 0;
@@ -111,10 +119,7 @@ namespace CSharpTutorials
             } while (problemCount <= 10);
 
             Console.WriteLine("You have gotten {0} out of 10 questions correct\n", correctAnswer);
-            Console.WriteLine("Press any key to return to the main menu");
-            Console.ReadKey();
-            Console.Clear();
-            Main();
+            returnToMainMenu();
         }
 
         public static void SquareRootCalculator()
@@ -128,7 +133,7 @@ namespace CSharpTutorials
               is put into both variables below */
 
             int squareRootNumber = integerValidation();
-            while(squareRootNumber < 0)
+            while (squareRootNumber < 0)
             {
                 Console.WriteLine("This is not a valid inpu, write a positive number!");
                 squareRootNumber = integerValidation();
@@ -136,7 +141,7 @@ namespace CSharpTutorials
 
             Console.WriteLine("To what precision do you want the square root to be done to? ");
             int precision = integerValidation();
-            while(precision < 0 || precision > 6)
+            while (precision < 0 || precision > 6)
             {
                 Console.WriteLine("Write an appropraite precision between 1 and 6");
                 precision = integerValidation();
@@ -169,63 +174,73 @@ namespace CSharpTutorials
             }
 
             Console.WriteLine("The square root of {0} to {1} decimal places is {2}\n", squareRootNumber, precision, Math.Round(average, precision));
-            Console.WriteLine("Press any key to return to the main menu\n");
-            Console.ReadKey();
-            Console.Clear();
-            Main();
+            returnToMainMenu();
+
 
         }
 
-        public static void CeaserEncrypt()
+        public static void CeaserEncrypt(string encryptOrDecrypt)
         {
+            Console.Clear();
             //a string that contains all alphabet letters and numbers 0 to 9 and space are written and then converted to a char array
-            string Alphabet = "abcdefghijklmnopqrstuvwxyz123456789 ";
+            string Alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 ";
             char[] alphaChars = Alphabet.ToCharArray();
+            
 
             //user inputs their shift as an integer
-            Console.WriteLine("What is your shift?");
-            int shift = int.Parse(Console.ReadLine());
-
+            int shift;
 
             //user inputs the messsage they want encrypted. This message is then converted from a string to a char array containing each individual character
-            Console.WriteLine("Write your message to be encrypted: ");
-            string userMessage = Console.ReadLine();
-            char[] userCharacters = userMessage.ToCharArray();
+            string userMessage;
+            char[] userCharacters;
 
-            StringBuilder encryptedMessage = new StringBuilder(); //This is an object included in c# that allows for the manipulation of strings which involves the creation of them as seen below
+            Console.WriteLine("Write your message to be {0}: ", encryptOrDecrypt); //we concatenate the write line with the value of the parameter to remind the user whether they are encrypting or decryoting
+
+            do
+            {
+                userMessage = Console.ReadLine();
+                userMessage = userMessage.ToUpper();
+                if((userMessage.IndexOfAny(alphaChars) != 0))
+                {
+                    Console.WriteLine("There are invalid characters in your string!");
+                }
+
+            } while (userMessage.IndexOfAny(alphaChars) != 0);
+            userCharacters = userMessage.ToCharArray();
+
+
+            Console.WriteLine("What is your shift?");
+            do
+            {
+                shift = integerValidation();
+            } while (shift < 0 || shift > 36);
 
             for (int i = 0; i < userCharacters.Length; i++) //iterating until we reach the number of charaacters in the users input
             {
-                //char letter = userMessage[i];
-                //letter = (char)(letter + shift);
-                //if (letter > 'z')
-                //{
-                //    letter = (char)(letter - 26);
-                //}
-                //else if (letter < 'a')
-                //{
-                //    letter = (char)(letter + 26);
-                //}
-
-                //encryptedMessage.Append(letter);
-
                 char letter = userMessage[i];
                 int letterIndex = Array.IndexOf(alphaChars, letter);
-                int newLetterPos = (((letterIndex + shift) % alphaChars.Length + alphaChars.Length) % alphaChars.Length);
-                char newLetter = alphaChars[newLetterPos];
-                userCharacters[i] = newLetter;
-
-
+                if(encryptOrDecrypt == "encrypted")
+                {
+                   int newLetterPos = (((letterIndex + shift) % 37 + 37) % 37);
+                   char newLetter = alphaChars[newLetterPos];
+                   userCharacters[i] = newLetter;
+                }
+                else //if the parameter is anything else (only other possibility is "decrypt", we move towards a decryption scenario
+                {
+                    int newLetterPos = (((letterIndex - shift) % 37 + 37) % 37);
+                    char newLetter = alphaChars[newLetterPos];
+                    userCharacters[i] = newLetter;
+                }
 
             }
-            encryptedMessage.Append(userCharacters);
-            Console.WriteLine(encryptedMessage);
-            Console.ReadKey();
+            string newMessage = String.Join("", userCharacters);
+            Console.WriteLine("Your encrypted text is " + newMessage);
+            returnToMainMenu();
+            
+ 
+            }
+            
         }
 
-        static void CeaserDecrypt()
-        {
 
-        }
     }
-}
